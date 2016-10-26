@@ -21,3 +21,14 @@
     max-height: 1000px;
     height: 100%;
 }
+
+.animation--fadein{
+   transition: opacity 1s;
+   opacity: 0.8;
+}
+
+
+.animation--fadein:hover{
+   transition: opacity 1s;
+   opacity: 1;
+}

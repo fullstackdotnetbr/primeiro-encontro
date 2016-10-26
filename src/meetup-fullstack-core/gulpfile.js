@@ -30,7 +30,7 @@ let server
 
 gulp.task('watch:test', 'Build everthing and serve a node server. ', ['test:unit'], (done) => {
     browserSyncCoverage.init({
-        server: './build/coverage/lcov-report/',
+        server: './wwwroot/coverage/lcov-report/',
         port: 3030,
         weinre: {
             port: 3031
@@ -46,7 +46,7 @@ gulp.task('test:unit', ['coverage'], (done) => {
         .pipe(plugins.istanbul.writeReports({
             coverageVariable: coverageVariable,
             reporters: ['lcov', 'json', 'text', 'text-summary'],
-            reportOpts: { dir: './build/coverage' }
+            reportOpts: { dir: './wwwroot/coverage' }
         }))
         .pipe(plugins.istanbul.enforceThresholds({ thresholds: { global: 90 } }))
         .pipe(browserSyncCoverage.stream())
@@ -129,7 +129,7 @@ gulp.task('watch', 'Watches all files and reload', ['inject:start'], () => {
 })
 
 gulp.task('serve:build', 'Build everthing and serve a node server. ', ['build'], (done) => {
-    server = gulp.src('build')
+    server = gulp.src('wwwroot')
         .pipe(plugins.webserver({
             port: 8000
         }))
@@ -142,7 +142,7 @@ gulp.task('app', ['browserify', 'sass', 'images', 'fonts'], () => {})
 
 gulp.task('build', 'Build everthing', ['rev-replace', 'test:unit'], () => {
     return gulp.src('./dist/**')
-        .pipe(gulp.dest('./build'))
+        .pipe(gulp.dest('./wwwroot'))
 })
 
 //////////////////////////////
@@ -193,9 +193,9 @@ gulp.task('rev-replace', ['clean:rev-replace'], () => {
 
 gulp.task('revision', ['app'], () => {
     return gulp.src([`${config.dest.main}/**/{*.js,*.css}`])
-        .pipe(plugins.rev())
-        .pipe(gulp.dest(config.dest.main))
-        .pipe(plugins.rev.manifest())
+        //.pipe(plugins.rev())
+        //.pipe(gulp.dest(config.dest.main))
+        //.pipe(plugins.rev.manifest())
         .pipe(gulp.dest(config.dest.main))
 })
 

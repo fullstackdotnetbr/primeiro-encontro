@@ -53,7 +53,7 @@ var config = {
     },
     unitTests: './tmp/test/unit/**.spec.js',
     testFolder: './tmp/',
-    build: './build',
+    build: './wwwroot',
     coverage: './coverage',
     messages: {
         build: {
