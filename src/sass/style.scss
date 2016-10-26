@@ -1,0 +1,23 @@
+// Mixins
+@import "_color";
+@import "_variables";
+
+/* ////////////////////////////////////////
+ // Buttons adjustments for small devices
+ ////////////////////////////////////////*/
+
+@media #{$small-and-down} {
+    .btn {
+        margin-top: 10px;
+    }
+}
+
+
+/* ///////////////
+ // Call to Action
+ ////////////////*/
+
+#call-to-action {
+    max-height: 1000px;
+    height: 100%;
+}
