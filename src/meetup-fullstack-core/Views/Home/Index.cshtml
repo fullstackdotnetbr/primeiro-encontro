@@ -1,5 +1,5 @@
 ﻿@model IEnumerable<meetup_fullstack_core.Model.Feedback>
-<div class="row">
+<div class="row" id="feedbacks">
     @foreach (var feedback in Model)
     {
     <div class="col s6 m7 l3">
@@ -25,11 +25,8 @@
             <form class="col s12">
                 <div class="row">
                     <div class="input-field col s12 m12">
-                        <select class="icons">
+                        <select id="usuarios" class="icons">
                             <option value="" disabled selected>Selecione o usuário</option>
-                            <option value="" data-icon="images/sample-1.jpg" class="circle">example 1</option>
-                            <option value="" data-icon="images/office.jpg" class="circle">example 2</option>
-                            <option value="" data-icon="images/yuna.jpg" class="circle">example 1</option>
                         </select>
                         <label>Usuário</label>
                     </div>
@@ -42,6 +39,6 @@
         </div>
     </div>
     <div class="modal-footer">
-        <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat ">Dar feedback</a>
+        <a id="dar-feedback" href="#!" class="modal-action modal-close waves-effect waves-green btn-flat ">Dar feedback</a>
     </div>
 </div>

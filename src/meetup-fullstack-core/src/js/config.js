@@ -9,5 +9,6 @@ var routes = routerInstance
     .add(home)
 
 window.onload = () => {
+    $('.modal-trigger').leanModal()
     routes.check()
 }
