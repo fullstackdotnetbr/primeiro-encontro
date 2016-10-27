@@ -7,7 +7,6 @@ import home from './pages/home'
 let routerInstance = Router(window)
 var routes = routerInstance
     .add(home)
-    .add(/contato/i, home)
 
 window.onload = () => {
     routes.check()

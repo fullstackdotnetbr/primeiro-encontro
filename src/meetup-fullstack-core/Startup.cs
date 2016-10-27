@@ -1,10 +1,8 @@
 ﻿using meetup_fullstack_core.Model;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
-using Newtonsoft.Json.Serialization;
 
 namespace meetup_fullstack_core
 {
@@ -29,6 +27,8 @@ namespace meetup_fullstack_core
             }
 
             app.UseMvcWithDefaultRoute();
+            app.UseDefaultFiles();
+            app.UseStaticFiles();
         }
     }
 }

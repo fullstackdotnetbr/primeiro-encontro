@@ -25,25 +25,25 @@ var config = {
         }
     },
     dest: {
-        main: './dist',
+        main: './wwwroot',
         css: {
-            path: './dist/css/',
+            path: './wwwroot/css/',
             file: 'style.css',
-            clean: './dist/**/**.css'
+            clean: './wwwroot/**/**.css'
         },
         fonts: {
-            clean: ['./dist/font/**/*']
+            clean: ['./wwwroot/font/**/*']
         },
         html: {
-            path: './dist/**/*.html',
-            clean: './dist/**/*.html'
+            path: './wwwroot/**/*.html',
+            clean: './wwwroot/**/*.html'
         },
         images: {
-            clean: ['./dist/**/*.png', './dist/**/*.jpg', './dist/**/*.gif', './dist/**/*.jpeg']
+            clean: ['./wwwroot/**/*.png', './wwwroot/**/*.jpg', './wwwroot/**/*.gif', './wwwroot/**/*.jpeg']
         },
         js: {
-            clean: ['./dist/**/*.js', './dist/**/*.map'],
-            path: './dist/js/',
+            clean: ['./wwwroot/**/*.js', './wwwroot/**/*.map'],
+            path: './wwwroot/js/',
             file: 'build.js',
         }
     },
@@ -59,17 +59,17 @@ var config = {
         build: {
             start: {
                 title: 'gulp build',
-                subtitle: 'Deployed to the dist folder',
+                subtitle: 'Deployed to the wwwroot folder',
                 message: 'Building everything..',
             },
             js: {
                 title: 'gulp build',
-                subtitle: 'Deployed to the dist folder',
+                subtitle: 'Deployed to the wwwroot folder',
                 message: 'Building js..',
             },
             end: {
                 title: 'gulp build',
-                subtitle: 'Deployed to the dist folder',
+                subtitle: 'Deployed to the wwwroot folder',
                 message: 'Build completed successfully',
             },
         },

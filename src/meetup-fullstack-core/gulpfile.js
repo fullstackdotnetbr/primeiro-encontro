@@ -108,11 +108,11 @@ gulp.task('bump', 'Bump version using e.g. gulp bump --type=major', () => {
 
 gulp.task('watch', 'Watches all files and reload', ['inject:start'], () => {
     browserSync.init({
-        server: config.dest.main,
-        port: 3032,
         weinre: {
             port: 3033
-        }
+        },
+        files:'./wwwroot/**/*.*',
+        proxy:'localhost:5000'
     })
 
     gulp.watch(config.source.sass.files, ['sass', 'inject'])
@@ -130,8 +130,12 @@ gulp.task('watch', 'Watches all files and reload', ['inject:start'], () => {
 
 gulp.task('serve:build', 'Build everthing and serve a node server. ', ['build'], (done) => {
     server = gulp.src('wwwroot')
-        .pipe(plugins.webserver({
-            port: 8000
+        .pipe(browserSync.init({
+            weinre: {
+                port: 3033
+            },
+            files:'./wwwroot/**/*.*',
+            proxy:'localhost:5000'
         }))
     return server
 })
@@ -141,7 +145,14 @@ gulp.task('serve:dev', 'Build everthing and serve a node server. ', ['watch:buil
 gulp.task('app', ['browserify', 'sass', 'images', 'fonts'], () => {})
 
 gulp.task('build', 'Build everthing', ['rev-replace', 'test:unit'], () => {
-    return gulp.src('./dist/**')
+    plugins.webserver({
+                port: 5001,
+                proxies: [{
+                    source: '/',
+                    target: 'http://localhost:5000/'
+                }]
+            })
+    return gulp.src('./wwwroot/**')
         .pipe(gulp.dest('./wwwroot'))
 })
 
@@ -150,43 +161,43 @@ gulp.task('build', 'Build everthing', ['rev-replace', 'test:unit'], () => {
 //////////////////////////////
 
 gulp.task('inject', ['html'], () => {
-    let target = gulp.src('./dist/**/*.html')
-    let sources = gulp.src(['./dist/js/*.js', './dist/css/*.css'], {
+    let target = gulp.src('./wwwroot/**/*.html')
+    let sources = gulp.src(['./wwwroot/js/*.js', './wwwroot/css/*.css'], {
         read: false
     })
     return target
         .pipe(plugins.inject(sources, {
-            ignorePath: '/dist'
+            ignorePath: '/wwwroot'
         }))
-        .pipe(gulp.dest('./dist'))
+        .pipe(gulp.dest('./wwwroot'))
         .pipe(browserSync.stream())
 })
 
 
 gulp.task('inject:start', ['app'], () => {
-    let target = gulp.src('./dist/**/*.html')
-    let sources = gulp.src(['./dist/js/*.js', './dist/css/*.css'], {
+    let target = gulp.src('./wwwroot/**/*.html')
+    let sources = gulp.src(['./wwwroot/js/*.js', './wwwroot/css/*.css'], {
         read: false
     })
     return target
         .pipe(plugins.inject(sources, {
-            ignorePath: '/dist'
+            ignorePath: '/wwwroot'
         }))
-        .pipe(gulp.dest('./dist'))
+        .pipe(gulp.dest('./wwwroot'))
 })
 
 
 gulp.task('rev-replace', ['clean:rev-replace'], () => {
     var manifest = gulp.src(`${config.source.main}/rev-manifest.json`)
-    return gulp.src('./dist/**/*.html')
+    return gulp.src('./wwwroot/**/*.html')
         .pipe(plugins.revReplace({
             manifest: manifest
         }))
         .pipe(gulp.dest(config.dest.main))
-        .pipe(plugins.inject(gulp.src(['./dist/js/**/*.js', './dist/css/**/*.css'], {
+        .pipe(plugins.inject(gulp.src(['./wwwroot/js/**/*.js', './wwwroot/css/**/*.css'], {
             read: false
         }), {
-            ignorePath: '/dist/'
+            ignorePath: '/wwwroot/'
         }))
         .pipe(gulp.dest(config.dest.main))
 })
@@ -211,7 +222,7 @@ gulp.task('clean:html', 'Compress html before inject', () => {
 gulp.task('html', 'Compress html before inject', ['clean:html'], () => {
     return gulp
         .src(config.source.html.files)
-        .pipe(gulp.dest('./dist'))
+        .pipe(gulp.dest('./wwwroot'))
 })
 
 gulp.task('clean:fonts', 'Clear build folder', () => {
@@ -221,7 +232,7 @@ gulp.task('clean:fonts', 'Clear build folder', () => {
 gulp.task('fonts', 'Just move fonts to the path of build', ['clean:fonts'], () => {
     return gulp
         .src(config.source.fonts.files)
-        .pipe(gulp.dest('dist/font'))
+        .pipe(gulp.dest('wwwroot/font'))
 })
 
 gulp.task('clean:images', 'Clear build folder', () => {
@@ -235,7 +246,7 @@ gulp.task('images', 'Compress all images and move to build path', ['clean:images
         //     progressive: true,
         //     interlaced: true,
         // }))
-        .pipe(gulp.dest('dist')).on('end', cb).on('error', cb)
+        .pipe(gulp.dest('wwwroot')).on('end', cb).on('error', cb)
 })
 
 gulp.task('clean:sass', 'Clear build folder', () => {
