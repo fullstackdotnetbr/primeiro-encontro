@@ -1,0 +1,32 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{4D9D2359-D82D-45BD-BCC3-41FC4947ACAA}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{7C3B07B4-D722-4B6C-A2EB-887A99624553}"
+	ProjectSection(SolutionItems) = preProject
+		global.json = global.json
+	EndProjectSection
+EndProject
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "meetup_fullstack_core", "src\WebApplication2\meetup_fullstack_core.xproj", "{139FC312-757A-48E3-BA01-424CCF32C9BF}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{139FC312-757A-48E3-BA01-424CCF32C9BF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{139FC312-757A-48E3-BA01-424CCF32C9BF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{139FC312-757A-48E3-BA01-424CCF32C9BF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{139FC312-757A-48E3-BA01-424CCF32C9BF}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{139FC312-757A-48E3-BA01-424CCF32C9BF} = {4D9D2359-D82D-45BD-BCC3-41FC4947ACAA}
+	EndGlobalSection
+EndGlobal
