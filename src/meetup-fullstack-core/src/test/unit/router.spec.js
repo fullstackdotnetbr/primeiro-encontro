@@ -1,4 +1,3 @@
-'use strict'
 import chai from 'chai'
 import routerModule from '../../js/modules/router'
 let router = routerModule()
