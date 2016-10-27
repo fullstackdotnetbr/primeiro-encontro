@@ -14,7 +14,9 @@ namespace meetup_fullstack_core
         {
             services.AddTransient<Feedbacks>();
             services.AddTransient<Usuarios>();
-            services.AddMvc();
+            services.AddMvc()
+                    .AddJsonOptions(options => 
+                        options.SerializerSettings.ContractResolver = new CamelCasePropertyNamesContractResolver());
         }
 
         public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
