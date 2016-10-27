@@ -10,6 +10,7 @@ namespace meetup_fullstack_core
     {
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddMvc();
         }
 
         public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
@@ -21,10 +22,7 @@ namespace meetup_fullstack_core
                 app.UseDeveloperExceptionPage();
             }
 
-            app.Run(async (context) =>
-            {
-                await context.Response.WriteAsync("Hello World!");
-            });
+            app.UseMvcWithDefaultRoute();
         }
     }
 }
