@@ -23,11 +23,11 @@
 }
 
 .animation--fadein{
-   transition: display 1s;
+   transition: opacity 0.2s;
    opacity: 0.8;
 }
 
 .animation--fadein:hover{
-   transition: display 1s;
+   transition: opacity 0.2s;
    opacity: 1;
 }

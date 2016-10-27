@@ -19,5 +19,8 @@ export default () => {
         .then((res) => {
           $('#feedbacks').append(feedback(res))
         })
+
+        $('#usuarios').val('')
+        $('#feedback').val('')
     })
 }
