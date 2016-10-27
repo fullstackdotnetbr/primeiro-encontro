@@ -8,9 +8,16 @@ namespace meetup_fullstack_core.Controllers
 {
     public class HomeController : Controller
     {
+        private readonly Feedbacks _feedbacks;
+
+        public HomeController(Feedbacks feedbacks)
+        {
+            _feedbacks = feedbacks;
+        }
+
         public IActionResult Index()
         {
-            return View();
+            return View(_feedbacks.Todos());
         }
     }
 }

@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
+using Newtonsoft.Json.Serialization;
 
 namespace meetup_fullstack_core
 {
@@ -10,7 +11,12 @@ namespace meetup_fullstack_core
     {
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddTransient<Feedbacks>();
+            services.AddTransient<Usuarios>();
             services.AddMvc();
+                    //.AddJsonFormatters(options => 
+                    //    options.ContractResolver = new CamelCasePropertyNamesContractResolver());
+
         }
 
         public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)

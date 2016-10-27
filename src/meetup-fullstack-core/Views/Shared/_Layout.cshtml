@@ -20,10 +20,18 @@
     <!-- endbower -->
     <!-- endbuild -->
     <!-- build:css styles/app.css-->
-    <!-- inject:css -->
-    <link rel="stylesheet" href="/css/style.css">
-    <!-- endinject -->
-    <!-- endbuild -->
+    <environment names="Development">
+        <!-- inject:css -->
+        <link rel="stylesheet" href="/css/style.css">
+        <!-- endinject -->
+        <!-- endbuild -->
+    </environment>
+    <environment names="Staging,Production">
+        <!-- inject:css -->
+        <link rel="stylesheet" href="/css/style.css">
+        <!-- endinject -->
+        <!-- endbuild -->
+    </environment>
 </head>
 
 <body>

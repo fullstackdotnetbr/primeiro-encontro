@@ -1,13 +1,17 @@
-﻿<div class="row">
+﻿@model IEnumerable<Feedback>
+<div class="row">
+    @foreach (var feedback in Model)
+    {
     <div class="col s6 m7 l3">
         <div class="card">
             <div class="card-image">
-                <img src="https://scontent.fcgh11-1.fna.fbcdn.net/v/t1.0-9/12241590_1021113527909807_8013622196961403824_n.jpg?oh=b1cb2da8c42d9f875f649bfe8316bd16&oe=589F0786">
-                <span class="card-title">Heber Ortiz</span>
+                <img src="@feedback.Imagem">
+                <span class="card-title">@feedback.Nome</span>
             </div>
             <div class="card-content">
-                <p>Ele acha que é o Gambit!</p>
+                <p>@feedback.Texto</p>
             </div>
         </div>
     </div>
+    }
 </div>
