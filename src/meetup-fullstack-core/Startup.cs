@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Builder;
+﻿using meetup_fullstack_core.Model;
+using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
@@ -14,9 +15,6 @@ namespace meetup_fullstack_core
             services.AddTransient<Feedbacks>();
             services.AddTransient<Usuarios>();
             services.AddMvc();
-                    //.AddJsonFormatters(options => 
-                    //    options.ContractResolver = new CamelCasePropertyNamesContractResolver());
-
         }
 
         public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
