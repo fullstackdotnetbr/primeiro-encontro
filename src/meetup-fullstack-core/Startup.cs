@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Builder;
+﻿using meetup_fullstack_core.Model;
+using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
@@ -12,7 +13,6 @@ namespace meetup_fullstack_core
             services.AddTransient<Feedbacks>();
             services.AddTransient<Usuarios>();
             services.AddMvc();
-            services.AddDirectoryBrowser();
         }
 
         public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
